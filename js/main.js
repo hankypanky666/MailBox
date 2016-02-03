@@ -7,25 +7,29 @@ app.config(function($stateProvider, $urlRouterProvider) {
     //
     // Now set up the states
     $stateProvider
-        .state('mail', {
-            url: "/inbox",
-            templateUrl: "partials/inboxlist.html"
-        })
-        .state('outbox', {
-            url: "/outbox",
-            templateUrl: "partials/outboxlist.html",
-        })
         .state('inbox', {
-            url: "/inbox",
-            templateUrl: "partials/inboxlist.html"
+            resolve: {
+                getLetters: function($http) {
+                    return $http.get('http://jsonplaceholder.typicode.com/comments')
+                        .then(function success(data) {
+                            return data;
+                        }, function error(data) {
+                            return data;
+                        })
+                }
+            },
+
+            controller: function(getLetters) {
+                if(getLetters.status !== 200){
+                    this.error = getLetters.statusText;
+                }
+                this.letters = getLetters.data;
+            },
+
+            url: '/inbox',
+            controllerAs: 'inbox',
+            templateUrl: "partials/mail/inboxlist.html"
         })
-        .state('state2.list', {
-            url: "/list",
-            templateUrl: "partials/state2.list.html",
-            controller: function($scope) {
-                $scope.things = ["A", "Set", "Of", "Things"];
-            }
-        });
 });
 
 //главное меню(шапка)
@@ -56,10 +60,10 @@ app.directive('mainContent', function(){
 });
 
 
-//
-app.controller('inboxList', function($http) {
-    var self = this; // это правильно?
 
+app.controller('inbox', function($http) {
+    var self = this; // это правильно?
+    self.error = "qwerty";
     $http.get('http://jsonplaceholder.typicode.com/comments')
         .then(function successCallback(response) {
             self.list = response.data;

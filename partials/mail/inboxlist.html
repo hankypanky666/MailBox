@@ -1,10 +1,10 @@
-<div ng-controller="inboxList as inbox" class="inboxList">
+<div class="inboxList">
     <div class="alert alert-dismissible alert-danger" ng-show="inbox.error">
         <button type="button" class="close" data-dismiss="alert"><i class="fa fa-times-circle-o"></i></button>
         <strong>Oh snap! {{inbox.error}}</strong>
     </div>
 
-    <div class="list-group" ng-repeat="letter in inbox.list">
+    <div class="list-group" ng-repeat="letter in inbox.letters">
         <a  class="list-group-item" href="#letter_{{letter.id}}"
             role="button" data-toggle="collapse" aria-expanded="false">
             <h5 class="list-group-item-heading">{{letter.name}}</h5>
