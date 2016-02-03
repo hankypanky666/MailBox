@@ -14,8 +14,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('mail', {
             url: '/mail',
-            abstract: true,
-            redirectTo: 'mail.inbox',
+            //abstract: true,
             template: '<ui-view/>'
         })
         .state('mail.inbox', {
