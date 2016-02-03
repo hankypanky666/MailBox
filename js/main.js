@@ -3,11 +3,22 @@ const app = angular.module('MailBox', ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/inbox");
+    $urlRouterProvider.otherwise("mail/inbox");
+    $urlRouterProvider.when('/mail', 'mail/inbox');
     //
     // Now set up the states
     $stateProvider
-        .state('inbox', {
+        .state('contacts', {
+            url: '/contacts',
+            templateUrl: "partials/contacts/index.html"
+        })
+        .state('mail', {
+            url: '/mail',
+            abstract: true,
+            redirectTo: 'mail.inbox',
+            template: '<ui-view/>'
+        })
+        .state('mail.inbox', {
             resolve: {
                 getLetters: function($http) {
                     return $http.get('http://jsonplaceholder.typicode.com/comments')
@@ -28,7 +39,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
             url: '/inbox',
             controllerAs: 'inbox',
-            templateUrl: "partials/mail/inboxlist.html"
+            templateUrl: "partials/mail/inbox.html"
+        })
+        .state('mail.outbox', {
+            url: '/outbox',
+            templateUrl: "partials/mail/outbox.html"
+        })
+        .state('mail.spam', {
+            url: '/spam',
+            templateUrl: "partials/mail/spam.html"
+        })
+        .state('mail.deleted', {
+            url: '/deleted',
+            templateUrl: "partials/mail/deleted.html"
         })
 });
 
@@ -61,7 +84,7 @@ app.directive('mainContent', function(){
 
 
 
-app.controller('inbox', function($http) {
+app.controller('inbox', function($http, getLetters) {
     var self = this; // это правильно?
     self.error = "qwerty";
     $http.get('http://jsonplaceholder.typicode.com/comments')
