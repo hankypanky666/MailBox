@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MailBox" ng-cloak>
+<head>
+    <meta charset="UTF-8">
+    <base href="http://localhost:63342/MailBox/app/">
+    <title>{{title}}</title>
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" >
+    <!-- Bootstrap core CSS -->
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="lib/css/mdb.min.css" rel="stylesheet">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="lib/css/style.css">
+</head>
+<body>
+
+<div ui-view></div>
+
+<!-- libs -->
+<script src="lib/js/angular.min.js"></script>
+<script src="lib/js/angular-ui-router.min.js"></script>
+
+<!-- app -->
+<script src="app.module.js"></script>
+<script src="app.config.js"></script>
+
+<!-- JQuery -->
+<script type="text/javascript" src="lib/js/jquery.min.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+
+<!-- Material Design Bootstrap -->
+<script type="text/javascript" src="lib/js/mdb.min.js"></script>
+
+<!-- Helpers -->
+<script src="helpers/routerHelperProvider.js"></script>
+
+<!-- routes -->
+<script src="auth/auth.routes.js"></script>
+
+</body>
+</html>
