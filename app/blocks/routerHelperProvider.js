@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('MailBox')
+        .module('blocks.module')
         .provider('routerHelper', routerHelperProvider);
 
     routerHelperProvider.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];

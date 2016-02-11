@@ -2,8 +2,11 @@
     'use strict';
 
     angular
-        .module('MailBox', [
-            'ui.router'
+        .module('app', [
+            'ui.router',
+            'blocks.module',
+            'app.auth',
+            'app.mail'
         ]);
 
 })();

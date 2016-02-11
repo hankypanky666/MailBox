@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.auth')
+        .module('app.mail')
         .run(appRun);
 
     /* @ngInject */
@@ -13,10 +13,10 @@
     function getStates() {
         return [
             {
-                state: 'login',
+                state: 'inbox',
                 config: {
-                    templateUrl: 'auth/login.html',
-                    url: '/login'
+                    templateUrl: 'mail/inbox.html',
+                    url: '/inbox'
                 }
             }
         ];

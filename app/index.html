@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="MailBox" ng-cloak>
+<html lang="en" ng-app="app" ng-cloak>
 <head>
     <meta charset="UTF-8">
-    <base href="http://localhost:63342/MailBox/app/">
+    <base href="/app/">
     <title>{{title}}</title>
     <!-- Material Design Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,6 +27,11 @@
 <script src="app.module.js"></script>
 <script src="app.config.js"></script>
 
+<!-- modules -->
+<script src="blocks/blocks.module.js"></script>
+<script src="auth/auth.module.js"></script>
+<script src="mail/mail.module.js"></script>
+
 <!-- JQuery -->
 <script type="text/javascript" src="lib/js/jquery.min.js"></script>
 
@@ -37,10 +42,11 @@
 <script type="text/javascript" src="lib/js/mdb.min.js"></script>
 
 <!-- Helpers -->
-<script src="helpers/routerHelperProvider.js"></script>
+<script src="blocks/routerHelperProvider.js"></script>
 
 <!-- routes -->
 <script src="auth/auth.routes.js"></script>
+<script src="mail/mail.routes.js"></script>
 
 </body>
 </html>
