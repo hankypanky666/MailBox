@@ -17,11 +17,17 @@
 </head>
 <body>
 
+<nav class="navbar red"></nav>
+
 <div ui-view></div>
+
+<footer class="page-footer blue center-on-small-only"></footer>
 
 <!-- libs -->
 <script src="lib/js/angular.min.js"></script>
 <script src="lib/js/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+
 
 <!-- app -->
 <script src="app.module.js"></script>
@@ -31,6 +37,7 @@
 <script src="blocks/blocks.module.js"></script>
 <script src="auth/auth.module.js"></script>
 <script src="mail/mail.module.js"></script>
+<script src="shared/shared.module.js"></script>
 
 <!-- JQuery -->
 <script type="text/javascript" src="lib/js/jquery.min.js"></script>
@@ -47,6 +54,16 @@
 <!-- routes -->
 <script src="auth/auth.routes.js"></script>
 <script src="mail/mail.routes.js"></script>
+
+<!-- directives -->
+<script src="shared/footerDirective.js"></script>
+<script src="shared/navbarDirective.js"></script>
+
+<!-- services -->
+<script src="auth/auth.service.js"></script>
+
+<!-- controllers -->
+<script src="auth/auth.controller.js"></script>
 
 </body>
 </html>

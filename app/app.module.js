@@ -4,9 +4,11 @@
     angular
         .module('app', [
             'ui.router',
+            'angular-storage',
             'blocks.module',
             'app.auth',
-            'app.mail'
+            'app.mail',
+            'shared.module'
         ]);
 
 })();
