@@ -3,68 +3,59 @@
 
     angular
         .module('app.auth')
-        .service('UserService', user)
+        .service('UserService', userService)
         .service('APIInterceptor', runInterceptor)
-        .service('LoginService', login)
-        .constant('ENDPOINT_URI', 'https://simple-rest-api.herokuapp.com/api/');
+        .service('LoginService', loginService);
 
 
-    function user(store) {
+    function userService($cookies) {
 
-        var service = this,
-            currentUser = null;
+        var service = this;
 
-        service.setCurrentUser = function(user) {
-            currentUser = user;
-            store.set('user', user);
-            return currentUser;
+        service.setCurrUser = function(user) {
+            $cookies.put('user', user.email);
         };
 
-        service.getCurrentUser = function() {
-            if (!currentUser) {
-                currentUser = store.get('user');
+        service.getCurrUser = function(){
+            if($cookies.get('user') !== null) {
+                return $cookies.get('user');
             }
-            return currentUser;
         };
+
+        service.deleteCurrUser = function () {
+            return $cookies.remove('user');
+        };
+
     }
 
-    function login($http, ENDPOINT_URI) {
+    function loginService($http, $state, UserService) {
         var service = this,
-            path = 'Users/';
+            isLogin = false;
 
-        function getUrl() {
-            return ENDPOINT_URI + path;
+        service.login = function(userCred) {
+            console.log('Service: ',userCred);
+            if(userCred.email == 'test@test.com' && userCred.password == 'test') {
+                isLogin = true;
+                UserService.setCurrUser(userCred);
+                return isLogin;
+            } else {
+                isLogin = false;
+                return isLogin;
+            }
+        };
+
+        service.logout = function () {
+            isLogin = false;
+            return UserService.deleteCurrUser();
         }
-
-        function getLogUrl(action) {
-            return getUrl() + action;
-        }
-
-        service.login = function(credentials) {
-            return $http.post(getLogUrl('login'), credentials);
-        };
-
-        service.logout = function() {
-            return $http.post(getLogUrl('logout'));
-        };
-
-        service.register = function(user) {
-            return $http.post(getUrl(), user);
-        };
     }
 
     function runInterceptor($rootScope, UserService) {
         var service = this;
 
-        console.log("interceptor", UserService);
-
         service.request = function(config) {
-            var currentUser = UserService.getCurrentUser(),
-                access_token = currentUser ? currentUser.access_token : null;
-
-            if (access_token) {
-                config.headers.authorization = access_token;
-            }
+            var currentUser = UserService.getCurrUser();
+            console.log();
             return config;
         };
 

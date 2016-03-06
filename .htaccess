@@ -1,11 +1,13 @@
-Options +FollowSymLinks -MultiViews
-<IfModule mod_rewrite.c>
-    RewriteEngine on
-    RewriteBase /
-    RewriteCond %{REQUEST_FILENAME} -s [OR]
-    RewriteCond %{REQUEST_FILENAME} -l [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
+Options +FollowSymLinks
 
-    RewriteRule ^.*$ - [NC,L]
-    RewriteRule ^(.*) /index.html [NC,L]
-</IfModule>
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !app/
+    RewriteRule (.*) /app/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+    RewriteRule (.*) index.html [L]
+    RewriteCond %{HTTP_HOST} !^www\.
+    RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+</ifModule>

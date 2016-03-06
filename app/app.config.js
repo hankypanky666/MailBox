@@ -4,7 +4,7 @@
         .module('app')
         .config(function($urlRouterProvider, $httpProvider) {
 
-            $urlRouterProvider.otherwise('/inbox');
+            $urlRouterProvider.otherwise('/login');
 
             $httpProvider.interceptors.push('APIInterceptor');
         })

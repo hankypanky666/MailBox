@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="73c40923-bc19-4d7a-b435-a3e901ff746b" name="46.101.214.164" url="http://sletay.by">
-        <fileTransfer host="sletay.by" port="21" rootFolder="/web/sletay.by/public_html" password="dfc0df99df92df9cdfc2dfdcdfdcdfc0df99df92df9cdfc2dfdcdfdc" username="admin">
+      <webServer id="73c40923-bc19-4d7a-b435-a3e901ff746b" name="46.101.214.164" url="http://angular.sletay.by">
+        <fileTransfer host="sletay.by" port="21" rootFolder="/web/angular.sletay.by/public_html" password="dfc0df99df92df9cdfc2dfdcdfdcdfc0df99df92df9cdfc2dfdcdfdc" username="admin">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
           </advancedOptions>
