@@ -10,7 +10,7 @@
             restrict: 'E',
             scope: {},
             templateUrl: 'shared/footer.html'
-        }
+        };
     }
 
 })();

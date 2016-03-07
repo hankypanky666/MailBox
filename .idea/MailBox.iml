@@ -9,7 +9,7 @@
     <orderEntry type="library" name="angular-bootstrap-lightbox-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="angular-ui-bootstrap-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="angular-ui-router-DefinitelyTyped" level="application" />
-    <orderEntry type="library" name="angularjs-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="angularLocalStorage-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="angular.min.js" level="project" />
   </component>
 </module>

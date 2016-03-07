@@ -15,13 +15,13 @@
     <!-- Custom style -->
     <link rel="stylesheet" href="lib/css/style.css">
 </head>
-<body>
+<body ng-controller="MainCtrl as main">
 
-<nav class="navbar red"></nav>
+<nav ng-show="main.isIssetUser()" class="navbar red"></nav>
 
 <div ui-view></div>
 
-<footer class="page-footer blue center-on-small-only"></footer>
+<footer ng-show="main.isIssetUser()" class="page-footer blue center-on-small-only"></footer>
 
 <!-- libs -->
 <script src="lib/js/angular.min.js"></script>
@@ -35,6 +35,7 @@
 <script src="app.config.js"></script>
 
 <!-- modules -->
+<script src="main/main.module.js"></script>
 <script src="blocks/blocks.module.js"></script>
 <script src="auth/auth.module.js"></script>
 <script src="mail/mail.module.js"></script>
@@ -65,6 +66,8 @@
 
 <!-- controllers -->
 <script src="auth/auth.controller.js"></script>
+<script src="main/main.controller.js"></script>
+<script src="shared/navbar.controller.js"></script>
 
 </body>
 </html>

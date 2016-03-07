@@ -7,5 +7,5 @@
             $urlRouterProvider.otherwise('/login');
 
             $httpProvider.interceptors.push('APIInterceptor');
-        })
+        });
 })();

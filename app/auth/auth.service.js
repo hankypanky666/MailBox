@@ -26,15 +26,21 @@
             return $cookies.remove('user');
         };
 
+        service.isAuth = function () {
+            if(!angular.isUndefined(this.getCurrUser())){
+                return true;
+            }
+        };
+
     }
 
-    function loginService($http, $state, UserService) {
+    function loginService(UserService) {
         var service = this,
             isLogin = false;
 
         service.login = function(userCred) {
-            console.log('Service: ',userCred);
-            if(userCred.email == 'test@test.com' && userCred.password == 'test') {
+            console.log('Service: ', userCred);
+            if(userCred.email === 'test@test.com' && userCred.password === 'test') {
                 isLogin = true;
                 UserService.setCurrUser(userCred);
                 return isLogin;
@@ -47,15 +53,17 @@
         service.logout = function () {
             isLogin = false;
             return UserService.deleteCurrUser();
-        }
+        };
     }
 
-    function runInterceptor($rootScope, UserService) {
+    function runInterceptor($rootScope, UserService, $location) {
         var service = this;
 
+        //заглушка через куки
         service.request = function(config) {
-            var currentUser = UserService.getCurrUser();
-            console.log();
+            if (!UserService.isAuth()){
+                $location.url('/login');
+            }
             return config;
         };
 

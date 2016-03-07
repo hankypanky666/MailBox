@@ -1,4 +1,4 @@
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="NavCtrl as nav">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
                 <span class="sr-only">Toggle navigation</span>
@@ -16,7 +16,7 @@
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li>
-                    <a ui-sref="logout" class="waves-effect waves-light pull-right"><i class="fa fa-sign-out"></i> Logout</a>
+                    <a href="#" ng-click="nav.logout()" class="waves-effect waves-light pull-right"><i class="fa fa-sign-out"></i> Logout</a>
                 </li>
             </ul>
             <!--<form class="navbar-form navbar-right" role="search">-->

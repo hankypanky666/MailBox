@@ -12,11 +12,13 @@
 
         ctrl.submit = function(user){
             if(LoginService.login(user)){
-                $rootScope.$broadcast('authorized');
+                //$rootScope.$broadcast('authorized');
                 $state.go('inbox');
-            } else {
-
             }
+        };
+
+        if (UserService.isAuth()){
+            $state.go('inbox');
         }
     }
 })();
